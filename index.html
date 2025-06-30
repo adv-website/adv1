@@ -7,90 +7,63 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+  <script>
   window.tailwind = {
     config: {
       theme: {
         extend: {
           colors: {
-            primary: '#221F53',       // بنفسجي داكن (لون أساسي للموقع)
-            secondary: '#6C3D8F',     // أرجواني باهت (لون مساعد)
-            accent: '#D54B79',        // وردي غامق (لون تمييز للعناصر المهمة)
-            info: '#4CA8D9',          // أزرق سماوي (للتنبيهات والملاحظات)
-            light: '#F4F6F8',         // أبيض رمادي فاتح (خلفيات ناعمة)
-            dark: '#1F2D3D',          // كحلي داكن جداً (للنصوص الأساسية)
-            grayish: '#B0B7C3'        // رمادي ناعم ومريح للعين (للنصوص الثانوية)
+            primary: '#221F53',       
+            secondary: '#6C3D8F',     
+            accent: '#D54B79',        
+            info: '#4CA8D9',          
+            light: '#F4F6F8',         
+            dark: '#1F2D3D',          
+            grayish: '#B0B7C3'        
           },
           fontFamily: {
-            arabic: ['Cairo', 'sans-serif'],               // للمتن والكتابة العادية
-            heading: ['Noto Naskh Arabic', 'serif']        // للعناوين والخط التقليدي
+            arabic: ['Cairo', 'sans-serif'],
+            heading: ['Noto Naskh Arabic', 'serif']
           },
           boxShadow: {
-            custom: '0 4px 20px rgba(0, 0, 0, 0.08)'        // ظل ناعم للعناصر
+            custom: '0 4px 20px rgba(0, 0, 0, 0.08)'
           }
         }
       }
     }
-  }
+  };
 </script>
-
-
-    
-  </script>
-
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css.css">
 </head>
-<body class="bg-light text-dark font-arabic leading-relaxed flex flex-col md:flex-row">
-
-  <!-- Overlay للشاشات الصغيرة -->
-  <div
-    id="overlay"
-    class="md:hidden fixed inset-0 z-30 bg-black/50 opacity-0 invisible transition-all duration-300"
-  ></div>
+<body class="bg-light text-dark font-arabic leading-relaxed flex">
 
   <!-- الشريط الجانبي -->
-  <aside
-    id="sidebar"
-    class="fixed left-0 top-0 h-full bg-light shadow-xl w-72 transition-all duration-300 z-40 overflow-hidden md:sticky md:h-screen"
-  >
-    <!-- رأس الشريط الجانبي -->
-    <div
-      id="sidebarHeader"
-      class="flex items-center justify-between p-6 bg-gradient-to-br from-primary to-secondary"
-    >
-      <h1
-        class="text-2xl font-heading bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-white drop-shadow-[0_0_4px_black] truncate"
-      >
+  <aside id="sidebar" class="relative w-72 h-screen bg-light shadow-xl transition-all duration-300">
+    <!-- رأس الشريط الجانبي ثابت -->
+    <div id="sidebarHeader" class="fixed top-0 left-0 right-0 flex items-center justify-between p-6 bg-gradient-to-br from-primary to-secondary z-50">
+      <button id="toggleSidebarBtn" class="text-white text-2xl transition-transform duration-300">
+        ☰
+      </button>
+      <h1 class="text-2xl font-heading bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-white drop-shadow-[0_0_4px_black] truncate">
         منصة التجويد
       </h1>
-      <button
-        id="toggleSidebarBtn"
-        class="text-white text-2xl transition-transform duration-300"
-      >
-        ▼
-      </button>
+      
     </div>
 
-    <!-- قائمة الدروس -->
-    <nav id="sidebarNav" class="px-2 py-4 space-y-1">
-      <a
-        href="lesson1"
-        class="flex items-center px-4 py-3 bg-secondary/10 text-primary rounded-lg border-r-4 border-accent hover:bg-secondary/15 active:scale-95 transition-all"
-      >
-        <div
-          class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25"
-        >
+    <!-- قائمة الدروس خلف الرأس -->
+    <nav id="sidebarNav" class="absolute top-[72px] left-0 w-full px-2 py-4 space-y-1 bg-light z-40">
+      <a href="#lesson1" class="flex items-center px-4 py-3 bg-secondary/10 text-primary rounded-lg border-r-4 border-accent hover:bg-secondary/15 active:scale-95 transition-all">
+        <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
           <span class="lesson-label text-accent font-bold">1</span>
         </div>
-        <span class="hidden md:inline text-primary">
-          الدرس الأول: أحكام النون الساكنة والتنوين
-        </span>
+        <span class="text-primary">الدرس الأول: أحكام النون الساكنة والتنوين</span>
       </a>
-      <!-- أضف المزيد من روابط الدروس بنفس النمط -->
+      <!-- المزيد من الدروس -->
     </nav>
   </aside>
 
+  <!-- المحتوى الرئيسي -->
   <!-- المحتوى الرئيسي -->
   <main class="flex-1 min-h-screen p-6 container mx-auto space-y-6">
     <!-- الترحيب والجزء العلوي -->
@@ -151,7 +124,23 @@
     </section>
   </main>
 
-  <!-- جافاسكربت التحكم -->
-  <script src="script.js"></script>
+  <script>
+  // script.js
+  const sidebar     = document.getElementById('sidebar');
+  const toggleBtn   = document.getElementById('toggleSidebarBtn');
+  const sidebarNav  = document.getElementById('sidebarNav');
+  let isNavVisible = true;
+
+  toggleBtn.addEventListener('click', () => {
+    isNavVisible = !isNavVisible;
+    // إظهار/إخفاء قائمة الدروس
+    sidebarNav.classList.toggle('hidden', !isNavVisible);
+    // تغيير عرض الشريط الجانبي
+    sidebar.classList.toggle('w-12', !isNavVisible);
+    sidebar.classList.toggle('w-72', isNavVisible);
+    // تدوير الأيقونة
+    toggleBtn.classList.toggle('rotate-90', !isNavVisible);
+  });
+  </script>
 </body>
 </html>
