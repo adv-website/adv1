@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة تعلم التجويد التعليمية</title>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script>
+ tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        light: "#DFE4EC",     // خلفية فاتحة – رمادي مزرق
+        dark: "#1D3557",      // أساسي – أزرق غامق
+        accent: "#A569BD",    // مميز – بنفسجي فاتح
+        primary: "#1D3557",   // رئيسي – أزرق غامق (مطابق لـ dark)
+        secondary: "#457b9d", // ثانوي – أزرق متوسط ناعم
+        info: "#17a2b8",      // معلوماتي – فيروزي/سماوي
+      }
+    }
+  }
+}
+
+
+
+</script>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css.css">
+</head>
+<body class="bg-light text-dark font-arabic leading-relaxed flex">
+
+  <aside id="sidebar" class="relative w-72 h-screen bg-light shadow-xl transition-all duration-300">
+  <!-- رأس الشريط الجانبي ثابت -->
+  <div id="sidebarHeader" class="fixed top-0 left-0 right-0 flex items-center justify-between p-6 bg-white shadow-md z-50">
+    <button id="toggleSidebarBtn" class="text-dark text-2xl transition-transform duration-300 z-10">
+      ☰
+    </button>
+    <div class="relative w-full">
+      <h1 class="absolute inset-x-0 text-center font-bold text-2xl font-heading bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-info drop-shadow-[0_0_4px_white]">
+        منصة التجويد
+      </h1>
+    </div>
+  </div>
+
+  <!-- قائمة الدروس المعدّلة -->
+  <nav id="sidebarNav" class="absolute top-[72px] left-0 w-full px-2 py-4 space-y-1 bg-light z-40">
+    <!-- مثال على درس واحد -->
+    <a href="#lesson1"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">1</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الأول: فضل القرآن الكريم
+      </span>
+    </a>
+
+    <a href="#lesson2"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">2</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الثاني: مبادئ علم التجويد
+      </span>
+    </a>
+
+    <a href="#lesson3"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">3</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الثالث: الاستعاذة والبسملة
+      </span>
+    </a>
+
+    <a href="#lesson4"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">4</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الرابع: مراتب القراءة واللحن + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson5"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">5</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الخامس: إتمام الحركات + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson6"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">6</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس السادس: تصحيح تلاوة (الناس - البينة)
+      </span>
+    </a>
+
+    <a href="#lesson7"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">7</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس السابع: أحكام النون الساكنة (الإظهار) + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson8"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">8</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الثامن: الإدغام + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson9"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">9</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس التاسع: تصحيح تلاوة (القدر - النازعات)
+      </span>
+    </a>
+
+    <a href="#lesson10"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">10</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس العاشر: الإقلاب + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson11"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">11</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الحادي عشر: الإخفاء + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson12"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">12</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الثاني عشر: تصحيح تلاوة (الطارق - الإنفطار)
+      </span>
+    </a>
+
+    <a href="#lesson13"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">13</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الثالث عشر: أحكام الميم الساكنة (الإدغام + الإظهار) + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson14"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">14</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الرابع عشر: الإخفاء + تطبيق
+      </span>
+    </a>
+
+    <a href="#lesson15"
+       class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
+              rounded-lg border-r-4 border-accent hover:bg-secondary/15 
+              active:scale-95 transition-all">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 hover:bg-accent/25">
+        <span class="lesson-label text-accent font-bold">15</span>
+      </div>
+      <span class="text-primary flex-1 whitespace-normal break-words">
+        الدرس الخامس عشر: تصحيح تلاوة (التكوير - عبس)
+      </span>
+    </a>
+  </nav>
+</aside>
+
+  <!-- المحتوى الرئيسي -->
+  <!-- المحتوى الرئيسي -->
+  <main class="flex-1 min-h-screen p-6 container mx-auto space-y-6 pt-[100px]">
+    <!-- الترحيب والجزء العلوي -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+      <div>
+        <h1 class="text-3xl font-heading text-primary">
+          مرحباً بك في منصة التجويد!
+        </h1>
+        <p class="text-secondary mt-1">
+          ابدأ رحلتك في تعلم أحكام التلاوة الصحيحة
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <i class="fas fa-bell text-xl text-primary relative">
+          <span
+            class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"
+          ></span>
+        </i>
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-r from-accent to-primary flex items-center justify-center text-white font-bold"
+        >
+          ت
+        </div>
+      </div>
+    </div>
+
+    <!-- بطاقة التقدم -->
+    <div class="bg-gradient-to-r from-secondary to-primary/70 rounded-xl p-6 text-white shadow-custom">
+      <div class="flex justify-between items-center">
+        <h3 class="text-xl font-bold">تقدمك في الدورة</h3>
+        <div class="text-4xl font-heading" id="progressNumber">45%</div>
+      </div>
+      <p class="mt-1">
+        أكملت
+        <span id="progressLabel" class="font-bold">45%</span>
+        من دروس التجويد
+      </p>
+      <div class="mt-4 bg-white/30 h-3 rounded-full">
+        <div
+          class="bg-accent h-3 rounded-full"
+          id="progressBar"
+          style="width: 45%"
+        ></div>
+      </div>
+    </div>
+
+    <!-- أهداف المنصة -->
+    <section class="bg-white p-6 rounded-xl shadow-custom">
+      <h2 class="text-2xl font-bold text-primary mb-4">
+        🎯 أهداف المنصة البرمجية
+      </h2>
+      <ul class="list-disc list-inside space-y-2 text-secondary">
+        <li>عرض دروس التجويد بشكل تفاعلي وميسر</li>
+        <li>تتبع تقدم المستخدم بشكل آلي</li>
+        <li>اختبارات تساعد على تثبيت المعلومات</li>
+        <li>ملخصات ومراجع خارجية مساعدة</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+  // script.js
+  const sidebar     = document.getElementById('sidebar');
+  const toggleBtn   = document.getElementById('toggleSidebarBtn');
+  const sidebarNav  = document.getElementById('sidebarNav');
+  let isNavVisible = true;
+
+  toggleBtn.addEventListener('click', () => {
+    isNavVisible = !isNavVisible;
+    // إظهار/إخفاء قائمة الدروس
+    sidebarNav.classList.toggle('hidden', !isNavVisible);
+    // تغيير عرض الشريط الجانبي
+    sidebar.classList.toggle('w-12', !isNavVisible);
+    sidebar.classList.toggle('w-72', isNavVisible);
+    // تدوير الأيقونة
+    toggleBtn.classList.toggle('rotate-90', !isNavVisible);
+  });
+  </script>
+</body>
+</html>
