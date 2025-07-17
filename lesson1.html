@@ -231,56 +231,104 @@
     </a>
   </nav>
 </aside>
+<!-- داخل <main> -->
+<main> 
+<main class="flex-1 min-h-screen p-6 container mx-auto space-y-6 pt-[100px]">
 
-  <!-- المحتوى الرئيسي -->
-  <!-- المحتوى الرئيسي -->
-  <main class="flex-1 min-h-screen p-6 container mx-auto space-y-6 pt-[100px]">
-    <!-- الترحيب والجزء العلوي -->
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-      <div>
-        <h1 class="text-3xl font-heading text-primary">
-          مرحباً بك في منصة التجويد!
-        </h1>
-        <p class="text-secondary mt-1">
-          ابدأ رحلتك في تعلم أحكام التلاوة الصحيحة
-        </p>
+  <!-- عنوان الدرس -->
+  <section>
+    <h1 class="text-3xl font-bold text-primary mb-2">الدرس الأول: فضل القرآن الكريم</h1>
+  </section>
+
+  <!-- أهداف الدرس -->
+  <section class="bg-white p-4 rounded-lg shadow-md">
+    <h2 class="text-xl font-bold text-accent mb-2">✨ أهداف الدرس</h2>
+    <ul class="list-disc list-inside text-secondary space-y-1">
+      <li>التعرف على مكانة القرآن الكريم</li>
+      <li>اكتساب أدب التعامل مع المصحف</li>
+      <li>تنمية حب التلاوة والتدبر</li>
+    </ul>
+  </section>
+
+  <!-- محتوى الدرس -->
+  <section class="bg-white p-4 rounded-lg shadow-md">
+    <h2 class="text-xl font-bold text-accent mb-2">🔹 محتوى الدرس</h2>
+    <p class="text-dark leading-loose">
+      فضل تلاوة القرآن الكريم عظيم، فقد وصفه النبي صلى الله عليه وسلم بأنه شفيع لأصحابه... (أكمل المحتوى هنا)
+    </p>
+  </section>
+
+  <!-- ملخص خريطة ذهنية -->
+  <section class="bg-white p-4 rounded-lg shadow-md">
+    <h2 class="text-xl font-bold text-accent mb-2">🌿 ملخص الدرس (خريطة ذهنية)</h2>
+    <img src="images/mindmap1.png" alt="خريطة ذهنية" class="w-full rounded-lg border">
+  </section>
+
+  <!-- كويزات على الدرس -->
+  <section class="bg-white p-4 rounded-lg shadow-md" id="quiz-section">
+    <h2 class="text-xl font-bold text-accent mb-4">🎮 اختبر نفسك</h2>
+    <div>
+      <p class="mb-2 font-semibold">ما هو فضل قراءة حرف واحد من القرآن؟</p>
+      <div class="space-y-2">
+        <button class="quiz-option bg-light px-4 py-2 rounded-lg border w-full text-right hover:bg-secondary/10" data-correct="false">لا أجر فيه</button>
+        <button class="quiz-option bg-light px-4 py-2 rounded-lg border w-full text-right hover:bg-secondary/10" data-correct="true">له عشر حسنات</button>
+        <button class="quiz-option bg-light px-4 py-2 rounded-lg border w-full text-right hover:bg-secondary/10" data-correct="false">يجب قراءته كاملاً</button>
       </div>
-      <div class="flex items-center gap-3">
-        <i class="fas fa-bell text-xl text-primary relative">
-          <span
-            class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"
-          ></span>
-        </i>
-        <div
-          class="w-10 h-10 rounded-full bg-gradient-to-r from-accent to-primary flex items-center justify-center text-white font-bold"
-        >
-          ت
-        </div>
-      </div>
+      <div id="quiz-feedback" class="mt-4 text-sm font-semibold"></div>
     </div>
+  </section>
 
-    <!-- بطاقة التقدم -->
-    <div class="bg-gradient-to-r from-secondary to-primary/70 rounded-xl p-6 text-white shadow-custom">
-      <div class="flex justify-between items-center">
-        <h3 class="text-xl font-bold">تقدمك في الدورة</h3>
-        <div class="text-4xl font-heading" id="progressNumber">45%</div>
-      </div>
-      <p class="mt-1">
-        أكملت
-        <span id="progressLabel" class="font-bold">45%</span>
-        من دروس التجويد
-      </p>
-      <div class="mt-4 bg-white/30 h-3 rounded-full">
-        <div
-          class="bg-accent h-3 rounded-full"
-          id="progressBar"
-          style="width: 45%"
-        ></div>
-      </div>
+  <!-- زر إتمام الدرس -->
+  <section class="flex justify-end">
+    <button id="completeLessonBtn"
+            class="bg-accent text-white px-6 py-2 rounded-lg shadow hover:bg-accent/90 transition hidden">
+      ✅ أتممت هذا الدرس
+    </button>
+    <div id="lessonDoneMessage" class="text-green-600 font-bold hidden">
+      ✅ تم إكمال هذا الدرس مسبقًا
     </div>
+  </section>
 
-    
-  </main>
+</main>
+
+<script>
+  // حفظ إتمام الدرس محليًا بدون قاعدة بيانات
+  const btn = document.getElementById('completeLessonBtn');
+  const doneMsg = document.getElementById('lessonDoneMessage');
+
+  if (localStorage.getItem('lesson1_completed') === 'true') {
+    doneMsg.classList.remove('hidden');
+  } else {
+    btn.classList.remove('hidden');
+  }
+
+  btn.addEventListener('click', () => {
+    localStorage.setItem('lesson1_completed', 'true');
+    btn.classList.add('hidden');
+    doneMsg.classList.remove('hidden');
+    alert("تم تسجيل الدرس كمكتمل ✅");
+  });
+
+  // منطق الكويز
+  const options = document.querySelectorAll('.quiz-option');
+  const feedback = document.getElementById('quiz-feedback');
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const correct = option.getAttribute('data-correct') === 'true';
+
+      if (correct) {
+        feedback.textContent = 'إجابة صحيحة ✅';
+        feedback.classList.remove('text-red-600');
+        feedback.classList.add('text-green-600');
+      } else {
+        feedback.textContent = '❌ إجابة غير صحيحة، حاول مرة أخرى';
+        feedback.classList.remove('text-green-600');
+        feedback.classList.add('text-red-600');
+      }
+    });
+  });
+</script>
 
   <script src="script.js"></script>
 
