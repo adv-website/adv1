@@ -50,7 +50,7 @@
   <!-- قائمة الدروس المعدّلة -->
   <nav id="sidebarNav" class="absolute top-[72px] left-0 w-full px-2 py-4 space-y-1 bg-light z-40">
     <!-- مثال على درس واحد -->
-    <a href="#lesson1"
+    <a href="lesson1.html"
        class="flex flex-wrap items-center px-4 py-3 bg-white text-primary 
               rounded-lg border-r-4 border-accent hover:bg-secondary/15 
               active:scale-95 transition-all">
@@ -279,37 +279,10 @@
       </div>
     </div>
 
-    <!-- أهداف المنصة -->
-    <section class="bg-white p-6 rounded-xl shadow-custom">
-      <h2 class="text-2xl font-bold text-primary mb-4">
-        🎯 أهداف المنصة البرمجية
-      </h2>
-      <ul class="list-disc list-inside space-y-2 text-secondary">
-        <li>عرض دروس التجويد بشكل تفاعلي وميسر</li>
-        <li>تتبع تقدم المستخدم بشكل آلي</li>
-        <li>اختبارات تساعد على تثبيت المعلومات</li>
-        <li>ملخصات ومراجع خارجية مساعدة</li>
-      </ul>
-    </section>
+    
   </main>
 
-  <script>
-  // script.js
-  const sidebar     = document.getElementById('sidebar');
-  const toggleBtn   = document.getElementById('toggleSidebarBtn');
-  const sidebarNav  = document.getElementById('sidebarNav');
-  let isNavVisible = true;
+  <script src="script.js"></script>
 
-  toggleBtn.addEventListener('click', () => {
-    isNavVisible = !isNavVisible;
-    // إظهار/إخفاء قائمة الدروس
-    sidebarNav.classList.toggle('hidden', !isNavVisible);
-    // تغيير عرض الشريط الجانبي
-    sidebar.classList.toggle('w-12', !isNavVisible);
-    sidebar.classList.toggle('w-72', isNavVisible);
-    // تدوير الأيقونة
-    toggleBtn.classList.toggle('rotate-90', !isNavVisible);
-  });
-  </script>
 </body>
 </html>

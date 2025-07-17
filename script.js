@@ -1,6 +1,6 @@
 // script.js
 // script.js
-
+/*
 const sidebar      = document.getElementById('sidebar');
 const toggleBtn    = document.getElementById('toggleSidebarBtn');
 const sidebarNav   = document.getElementById('sidebarNav');
@@ -30,7 +30,23 @@ toggleBtn.addEventListener('click', () => {
   // تدوير أيقونة الزر
   toggleBtn.classList.toggle('rotate-90', isCollapsed);
 });
+*/
+// script.js
+  const sidebar     = document.getElementById('sidebar');
+  const toggleBtn   = document.getElementById('toggleSidebarBtn');
+  const sidebarNav  = document.getElementById('sidebarNav');
+  let isNavVisible = true;
 
+  toggleBtn.addEventListener('click', () => {
+    isNavVisible = !isNavVisible;
+    // إظهار/إخفاء قائمة الدروس
+    sidebarNav.classList.toggle('hidden', !isNavVisible);
+    // تغيير عرض الشريط الجانبي
+    sidebar.classList.toggle('w-12', !isNavVisible);
+    sidebar.classList.toggle('w-72', isNavVisible);
+    // تدوير الأيقونة
+    toggleBtn.classList.toggle('rotate-90', !isNavVisible);
+  });
 /*
 const sidebar     = document.getElementById('sidebar');
   const toggleBtn   = document.getElementById('toggleSidebarBtn');
