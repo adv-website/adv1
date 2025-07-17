@@ -48,6 +48,22 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.classList.toggle('rotate-90', !isNavVisible);
   });
 /*
+  document.addEventListener('DOMContentLoaded', function () {
+  const sidebar     = document.getElementById('sidebar');
+  const toggleBtn   = document.getElementById('toggleSidebarBtn');
+  const sidebarNav  = document.getElementById('sidebarNav');
+  let isNavVisible = true;
+
+  toggleBtn.addEventListener('click', () => {
+    isNavVisible = !isNavVisible;
+    sidebarNav.classList.toggle('hidden', !isNavVisible);
+    sidebar.classList.toggle('w-12', !isNavVisible);
+    sidebar.classList.toggle('w-72', isNavVisible);
+    toggleBtn.classList.toggle('rotate-90', !isNavVisible);
+  });
+});
+
+
 const sidebar     = document.getElementById('sidebar');
   const toggleBtn   = document.getElementById('toggleSidebarBtn');
   const sidebarNav  = document.getElementById('sidebarNav');
